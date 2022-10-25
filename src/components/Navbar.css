@@ -1,0 +1,35 @@
+ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+}
+a{
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+}
+nav .title{
+    font-size: 32px;
+}
+.title-style{
+    color:#FFA62B;
+}
+.navbar{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
+.nav-item a{
+    padding: 0 3rem;
+    font-size: 18px;
+}
+.nav-item a:hover{
+    transition: 0.6 s color;
+    color: #FFA62B;
+
+}
+
