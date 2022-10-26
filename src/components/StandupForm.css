@@ -1,0 +1,33 @@
+.standup-form {
+  width: 526px;
+  height: 250px;
+  /* height: 300px; */
+  background-color: #fcf66a;
+  border-radius: 5%;
+  display: grid;
+  font-weight: 700;
+  padding: 2%;
+
+}
+.form-btn{
+    align-self: center;
+    justify-self: center;
+}
+.input-field {
+  display: grid;
+  align-self: center;
+  justify-self: center;
+  grid-template-columns: 0.5fr 1fr;
+}
+
+.input-field > input {
+  align-self: center;
+  border: none;
+  width: 250px;
+  height: 20px;
+  padding: 5px;
+}
+.input-field > label {
+  justify-self: left;
+  align-self: center;
+}
