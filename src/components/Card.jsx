@@ -11,17 +11,17 @@ function Card(props) {
       <div className="standup">
         <dl className="standup-list">
           <dt>Yesterday:</dt>
-          <dd className="list-item">Hello world world world</dd>
-          <dd className="list-item">Hello world world world</dd>
-          <dd className="list-item">Hello world world world</dd>
+          <dd className="list-item">New Standup Item</dd>
+          <dd className="list-item">New Standup Item</dd>
+          <dd className="list-item">New Standup Item</dd>
         </dl>
       </div>
       <div className="standup">
         <dl className="standup-list">
           <dt>Today:</dt>
-          <dd className="list-item">Hello world world world</dd>
-          <dd className="list-item">Hello world world world</dd>
-          <dd className="list-item">Hello world world world</dd>
+          <dd className="list-item">New Standup Item</dd>
+          <dd className="list-item">New Standup Item</dd>
+          <dd className="list-item">New Standup Item</dd>
         </dl>
       </div>
     </div>
