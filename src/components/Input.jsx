@@ -3,7 +3,7 @@ function Input(props) {
   return (
     <div className="input-field">
       <label htmlFor={props.input}>{props.input}:</label>
-      <input type="text" id={props.input} />
+      <input onChange={props.handleInput} type="text" id={props.input} value= {props.value} />
     </div>
   );
 }
