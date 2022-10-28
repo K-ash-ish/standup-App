@@ -10,13 +10,13 @@ function Card(props) {
       <div className="standup">
         <dl className="standup-list">
           <dt className="list-heading">Yesterday:</dt>
-          <dd className="list-item">New Standup Item</dd>
+          <dd className="list-item">{props.yesterdayStandup}</dd>
         </dl>
       </div>
       <div className="standup">
         <dl className="standup-list">
           <dt className="list-heading">Today:</dt>
-
+          <dd className="list-item">{props.todayStandup}</dd>
         </dl>
       </div>
     </div>
