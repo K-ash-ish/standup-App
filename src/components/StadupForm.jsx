@@ -10,6 +10,8 @@ function StandupForm(props) {
     console.log(today);
     console.log(yesterday)
     event.preventDefault();
+    setYesterday("");
+    setToday("");
   }
   function handleToday(event) {
     setToday(event.target.value);
