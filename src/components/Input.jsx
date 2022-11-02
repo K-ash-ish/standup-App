@@ -1,9 +1,10 @@
 import React from "react";
 function Input(props) {
+  const {input, handleInput, name, value } = props;
   return (
     <div className="input-field">
-      <label htmlFor={props.input}>{props.input}:</label>
-      <input onChange={props.handleInput} type="text" id={props.input} value= {props.value} />
+      <label htmlFor={input}>{input}:</label>
+      <input name = {name} onChange={handleInput} type="text" id={input} value= {value} />
     </div>
   );
 }

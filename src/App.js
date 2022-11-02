@@ -4,19 +4,27 @@ import "./App.css";
 import StandupForm from "./components/StadupForm";
 import Card from "./components/Card";
 function App() {
-  const [yesterday, setYesterday] = useState("");
-  const [today, setToday] = useState("");
+  const [standup, setStandup] = useState({
+    yesterday:"",
+    today:""
+  });
+  const [allStandups, setAllStandups] = useState([])
+  function handleInput(event){
+    const {name, value} = event.target
+    setStandup(prevValue=>{
+      return {
+        ...prevValue,
+        [name]:value
+      };
+    });
+    
+  }
   function handleSubmit(event) {
     event.preventDefault();
-    setYesterday("");
-    setToday("");
-  }
-
-  function handleToday(event) {
-    setToday(event.target.value);
-  }
-  function handleYesterday(event) {
-    setYesterday(event.target.value);
+    setAllStandups((prevValue)=>{
+      return [...prevValue, standup]
+    });
+    console.log(allStandups)
   }
 
   return (
@@ -24,13 +32,10 @@ function App() {
       <Navbar />
       <main className="container">
         <StandupForm
-          today={today}
-          yesterday={yesterday}
           handleSubmit={handleSubmit}
-          handleToday={handleToday}
-          handleYesterday={handleYesterday}
+          handleInput = {handleInput}
         />
-        <Card todayStandup={today} yesterdayStandup={yesterday} />
+        <Card standup = {allStandups} />
       </main>
     </div>
   );
