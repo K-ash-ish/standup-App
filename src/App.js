@@ -24,7 +24,6 @@ function App() {
     setAllStandups((prevValue)=>{
       return [...prevValue, standup]
     });
-    console.log(allStandups)
   }
 
   return (
@@ -35,7 +34,7 @@ function App() {
           handleSubmit={handleSubmit}
           handleInput = {handleInput}
         />
-        <Card standup = {allStandups} />
+        <Card standups = {allStandups} />
       </main>
     </div>
   );
