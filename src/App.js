@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import "./App.css";
 import StandupForm from "./components/StadupForm";
 import Card from "./components/Card";
+import Button from "./components/Button";
 function App() {
   const [standup, setStandup] = useState({
     yesterday:"",
@@ -30,11 +31,16 @@ function App() {
     <div className="App">
       <Navbar />
       <main className="container">
+      <div className="left-container">
         <StandupForm
           handleSubmit={handleSubmit}
           handleInput = {handleInput}
         />
+      </div>
+      <div className="right-container">
         <Card standups = {allStandups} />
+        <Button type = "button" name = "Add Standup"/>
+      </div>
       </main>
     </div>
   );
