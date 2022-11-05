@@ -12,7 +12,6 @@ html {
 .container {
   padding: 100px 0;
   height: auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  place-items: center;
+  display: flex;
+  justify-content: space-around;
 }
