@@ -1,22 +1,32 @@
 import React from "react";
 import "./Card.css";
-import { v4 as uuidv4 } from "uuid";
 function StandupList(props) {
-  const { name, standups } = props;
-  function handleClick(event){
-    console.log(event.target.id)
-  }
+  const { name, standups, deleteItem, idY, idT } = props;
   return (
     <div className="standup">
       <dl className="standup-list">
         <dt className="list-heading">{name}:</dt>
         {standups.map((standup) => {
           return name === "Yesterday" ? (
-            <dd onClick={handleClick} key={uuidv4()} id = {uuidv4()} className="list-item">
+            <dd
+              onClick={(event) => {
+                deleteItem(idY, "yesterday");
+              }}
+              key={idY}
+              id={idY}
+              className="list-item"
+            >
               {standup.yesterday}
             </dd>
           ) : (
-            <dd key={uuidv4()} className="list-item">
+            <dd
+              onClick={(event) => {
+                deleteItem(idT, "today");
+              }}
+              key={idT}
+              id = {idT}
+              className="list-item"
+            >
               {standup.today}
             </dd>
           );
