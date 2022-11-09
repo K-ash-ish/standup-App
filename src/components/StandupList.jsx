@@ -1,7 +1,9 @@
 import React from "react";
 import "./Card.css";
+import { v4 as uuidv4 } from "uuid";
+
 function StandupList(props) {
-  const { name, standups, deleteItem, idY, idT } = props;
+  const { name, standups, deleteItem } = props;
   return (
     <div className="standup">
       <dl className="standup-list">
@@ -10,24 +12,24 @@ function StandupList(props) {
           return name === "Yesterday" ? (
             <dd
               onClick={(event) => {
-                deleteItem(idY, "yesterday");
+                deleteItem(event.target.id, name);
               }}
-              key={idY}
-              id={idY}
+              key={uuidv4()}
+              id={standup.yesterday.id}
               className="list-item"
             >
-              {standup.yesterday}
+              {standup.yesterday.entry}
             </dd>
           ) : (
             <dd
               onClick={(event) => {
-                deleteItem(idT, "today");
+                deleteItem(event.target.id, name);
               }}
-              key={idT}
-              id = {idT}
+              id = {standup.today.id}
+              key={uuidv4()}
               className="list-item"
             >
-              {standup.today}
+              {standup.today.entry}
             </dd>
           );
         })}
