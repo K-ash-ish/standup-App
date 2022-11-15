@@ -8,28 +8,29 @@ function StandupList(props) {
     <div className="standup">
       <dl className="standup-list">
         <dt className="list-heading">{name}:</dt>
-        {standups.map((standup) => {
+        {standups.map((data) => {
           return name === "Yesterday" ? (
             <dd
               onClick={(event) => {
-                deleteItem(event.target.id, name);
+                deleteItem(event.target.id);
               }}
               key={uuidv4()}
-              id={standup.yesterday.id}
+              id={data.id}
               className="list-item"
             >
-              {standup.yesterday.entry}
+              {data.standup}
             </dd>
+            
           ) : (
             <dd
               onClick={(event) => {
-                deleteItem(event.target.id, name);
+                deleteItem(event.target.id);
               }}
-              id = {standup.today.id}
               key={uuidv4()}
+              id = {data.id}
               className="list-item"
             >
-              {standup.today.entry}
+              {data.standup}
             </dd>
           );
         })}

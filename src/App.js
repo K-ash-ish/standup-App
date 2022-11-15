@@ -6,58 +6,52 @@ import Card from "./components/Card";
 import Button from "./components/Button";
 import { v4 as uuidv4 } from "uuid";
 function App() {
-  const [standup, setStandup] = useState({
-    yesterday: {
-      entry: "",
-      id: "",
-    },
-    today: {
-      entry: "",
-      id: "",
-    },
+  const [yStandup, setYStandup] = useState({
+    standup: "",
+    id: "",
   });
-  const [allStandups, setAllStandups] = useState([]);
+  const [tStandup, setTStandup] = useState({
+    standup: "",
+    id: "",
+  });
+  const [yesterday, setYesterday] = useState([]);
+  const [today, setToday] = useState([]);
   function handleInput(event) {
     const { name, value } = event.target;
-    setStandup((prevValue) => {
-      if (name === "yesterday") {
+    if (name === "yesterday") {
+      setYStandup((prevValue) => {
         return {
-          yesterday: {
-            entry: value,
-            id: uuidv4(),
-          },
-          today: {
-            entry: prevValue.today.entry,
-            id: prevValue.today.id,
-          },
+          standup: value,
+          id: uuidv4(),
         };
-      } else {
+      });
+    } else {
+      setTStandup((prevValue) => {
         return {
-          today: {
-            entry: value,
-            id: uuidv4(),
-          },
-          yesterday: {
-            entry: prevValue.yesterday.entry,
-            id: prevValue.yesterday.id,
-          },
+          standup: value,
+          id: uuidv4(),
         };
-      }
-    });
+      });
+    }
   }
   function handleSubmit(event) {
     event.preventDefault();
-    setAllStandups((prevValue) => {
-      return [...prevValue, standup];
+    setYesterday((prevValue) => {
+      return [...prevValue, yStandup];
+    });
+    setToday((prevValue) => {
+      return [...prevValue, tStandup];
     });
   }
-  function deleteItem(id, name) {
-    setAllStandups((prevStandup) => {
-      return prevStandup.filter((standup) => {
-        console.log("clicked");
-        return name === "yesterday"
-          ? standup.yesterday.id !== id
-          : standup.today.id !== id;
+  function deleteItem(id) {
+    setYesterday((prevValue) => {
+      return prevValue.filter((standup) => {
+        return standup.id !== id;
+      });
+    });
+    setToday((prevValue) => {
+      return prevValue.filter((standup) => {
+        return standup.id !== id;
       });
     });
   }
@@ -70,7 +64,7 @@ function App() {
           <StandupForm handleSubmit={handleSubmit} handleInput={handleInput} />
         </div>
         <div className="right-container">
-          <Card standups={allStandups} deleteItem={deleteItem} />
+          <Card yesterday={yesterday} today={today} deleteItem={deleteItem} />
           <Button type="button" name="Add Standup" />
         </div>
       </main>
