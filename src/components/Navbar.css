@@ -1,9 +1,8 @@
 ul{
-    margin: 0;
-    padding: 0;
-    list-style: none;
+   list-style: none;
 }
 nav{
+    margin: 20px 0;
     display: flex;
     justify-content: space-around;
 }
