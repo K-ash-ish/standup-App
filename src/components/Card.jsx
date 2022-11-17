@@ -1,5 +1,6 @@
 import React from "react";
 import StandupList from "./StandupList";
+
 import "./Card.css";
 function Card(props) {
   const { yesterday, today, deleteItem } = props;
