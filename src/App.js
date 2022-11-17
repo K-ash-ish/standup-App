@@ -53,7 +53,6 @@ function App() {
     setAllStandups(prevValue=>{
       return [...prevValue, newStandup];
     });
-    // console.log(newStandup)
   }
   function deleteItem(id) {
     setYesterday((prevValue) => {

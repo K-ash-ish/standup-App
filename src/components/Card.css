@@ -23,6 +23,7 @@ h3, .standup-list{
     margin-left: 25px;
 }
 .list-item{
+    margin-left: 40px;
     word-wrap: break-word;
     display: list-item;
 }
