@@ -3,7 +3,7 @@ import "./Card.css";
 import { v4 as uuidv4 } from "uuid";
 
 function StandupList(props) {
-  const { name, standups, deleteItem } = props;
+  const { name, standups, handleClick } = props;
   return (
     <div className="standup">
       <dl className="standup-list">
@@ -12,7 +12,7 @@ function StandupList(props) {
           return name === "Yesterday" ? (
             <dd
               onClick={(event) => {
-                deleteItem(event.target.id);
+                handleClick(event.target);
               }}
               key={uuidv4()}
               id={data.id}
@@ -24,7 +24,7 @@ function StandupList(props) {
           ) : (
             <dd
               onClick={(event) => {
-                deleteItem(event.target.id);
+                handleClick(event.target);
               }}
               key={uuidv4()}
               id = {data.id}

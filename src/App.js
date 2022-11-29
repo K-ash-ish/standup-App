@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import Navbar from "./components/Navbar";
 import "./App.css";
-import StandupForm from "./components/StadupForm";
-import Card from "./components/Card";
-import Button from "./components/Button";
 import { v4 as uuidv4 } from "uuid";
-import About from "./components/About";
+import Home from "./components/Home";
+import Navbar from "./components/Navbar";
+import { Route, Routes } from "react-router-dom";
+import AllStandups from "./components/AllStandups";
 function App() {
   const [yStandup, setYStandup] = useState({
     standup: "",
@@ -47,50 +46,50 @@ function App() {
   }
   function addAllStandup() {
     const newStandup = {
-      yesterday:yesterday,
-      today: today
-    }
-    setAllStandups(prevValue=>{
+      yesterday: yesterday,
+      today: today,
+    };
+    setAllStandups((prevValue) => {
       return [...prevValue, newStandup];
     });
   }
-  function deleteItem(id) {
+  function deleteItem(target) {
     setYesterday((prevValue) => {
       return prevValue.filter((standup) => {
-        return standup.id !== id;
+        return standup.id !== target.id;
       });
     });
     setToday((prevValue) => {
       return prevValue.filter((standup) => {
-        return standup.id !== id;
+        return standup.id !== target.id;
       });
     });
   }
+
   return (
     <div className="app">
       <Navbar />
-      <main className="container">
-        <div className="left-container">
-          <StandupForm handleSubmit={handleSubmit} handleInput={handleInput} />
-        </div>
-        <div className="right-container">
-          <Card yesterday={yesterday} today={today} deleteItem={deleteItem} />
-          <Button
-            type="button"
-            name="Add Standup"
-            handleClick={addAllStandup}
-          />
-        </div>
-      </main>
-      <section className="all-standups">
-        <h2>All Standups</h2>
-        <div className="standups-grid">
-          {allStandups.map((standup) => {
-            return <Card key = {uuidv4()} yesterday={standup.yesterday} today={standup.today} />;
-          })}
-        </div>
-      </section>
-      <About />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home
+              handleSubmit={handleSubmit}
+              handleInput={handleInput}
+              yesterday={yesterday}
+              today={today}
+              handleClick={{
+                deleteItem: deleteItem,
+                addAllStandup: addAllStandup,
+              }}
+            />
+          }
+        ></Route>
+        <Route
+          path="/allstandups"
+          element={<AllStandups allStandups={allStandups} />}
+        ></Route>
+      </Routes>
     </div>
   );
 }

@@ -3,7 +3,7 @@ import StandupList from "./StandupList";
 
 import "./Card.css";
 function Card(props) {
-  const { yesterday, today, deleteItem } = props;
+  const { yesterday, today, handleClick } = props;
   const date = new Date();
   const currentDate =
     date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
@@ -12,12 +12,12 @@ function Card(props) {
       <h3>{currentDate}</h3>
       <StandupList
         standups={yesterday}
-        deleteItem={deleteItem}
+        handleClick={handleClick}
         name="Yesterday"
       />
       <StandupList
         standups={today}
-        deleteItem={deleteItem}
+        handleClick={handleClick}
         name="Today"
       />
     </div>
