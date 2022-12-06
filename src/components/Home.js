@@ -13,7 +13,7 @@ function Home(props) {
           <StandupForm handleSubmit={handleSubmit} handleInput={handleInput} />
         </div>
         <div className="right-container">
-          <Card yesterday={yesterday} today={today} handleClick={deleteItem} />
+          <Card toRender = {true} yesterday={yesterday} today={today} handleClick={deleteItem} />
           <Button
             type="button"
             name="Add Standup"

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function StandupList(props) {
-  const { name, standups, handleClick } = props;
+  const { name, standups, handleClick, toRender } = props;
   function deleteListItem(event) {
     let target = event.target.parentNode.parentNode.parentNode;
     handleClick(target);
@@ -19,26 +19,30 @@ function StandupList(props) {
             <dd key={uuidv4()} id={data.id} className="list-item">
               <div className="item">
                 {data.standup}
-                <FontAwesomeIcon
-                  className="delete"
-                  onClick={(event) => {
-                    deleteListItem(event);
-                  }}
-                  icon={faTrash}
-                />
+                {toRender ? (
+                  <FontAwesomeIcon
+                    className="delete"
+                    onClick={(event) => {
+                      deleteListItem(event);
+                    }}
+                    icon={faTrash}
+                  />
+                ) : null}
               </div>
             </dd>
           ) : (
             <dd key={uuidv4()} id={data.id} className="list-item">
               <div className="item">
                 {data.standup}
-                <FontAwesomeIcon
-                  className="delete"
-                  onClick={(event) => {
-                    deleteListItem(event);
-                  }}
-                  icon={faTrash}
-                />
+                {toRender ? (
+                  <FontAwesomeIcon
+                    className="delete"
+                    onClick={(event) => {
+                      deleteListItem(event);
+                    }}
+                    icon={faTrash}
+                  />
+                ) : null}
               </div>
             </dd>
           );
