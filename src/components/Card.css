@@ -26,7 +26,6 @@ h3, .standup-list{
     margin-left: 40px;
     word-wrap: break-word;
     display: list-item;
-    cursor: pointer;
 }
 .item{
     display: flex;
@@ -34,5 +33,6 @@ h3, .standup-list{
     align-items: center;
 }
 .delete{
+    cursor: pointer;
     color: red;
 }
