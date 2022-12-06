@@ -1,0 +1,31 @@
+.all-standups > h2 {
+  text-align: center;
+}
+.progress-bar {
+  padding: 5px 0;
+  border: 1px slateblue solid;
+  display: flex;
+  justify-content: space-around;
+}
+.red-box::after {
+  content: "";
+  display: inline-block;
+  background-color: red;
+  width: 10px;
+  height: 10px;
+}
+.green-box::after {
+  content: "";
+  display: inline-block;
+  background-color: green;
+  width: 10px;
+  height: 10px;
+}
+.standups-grid {
+  display: grid;
+  place-content: center;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: space-evenly;
+  gap: 10px;
+  margin: 50px 0;
+}
