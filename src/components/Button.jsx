@@ -1,13 +1,14 @@
 import React from "react";
 import "./Button.css";
 function Button(props) {
+  const {handleClick, type , name} = props
   return (
     <button
-      onClick={props.handleClick}
+      onClick={handleClick}
       className="btn form-btn"
-      type={props.type}
+      type={type}
     >
-      {props.name}
+      {name}
     </button>
   );
 }
