@@ -2,13 +2,26 @@ import React from "react";
 import "./Card.css";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import {
+  faTrash,
+  faXmarkCircle,
+  faCheckCircle,
+} from "@fortawesome/free-solid-svg-icons";
 
 function StandupList(props) {
   const { name, standups, handleClick, toRender } = props;
   function deleteListItem(event) {
     let target = event.target.parentNode.parentNode.parentNode;
     handleClick(target);
+  }
+  function handleStatus(progress, item) {
+    if (progress === "completed") {
+      item.style.color = "black";
+      item.style.textDecoration = "line-through";
+    } else {
+      item.style.textDecoration = "none";
+      item.style.color = "red";
+    }
   }
   return (
     <div className="standup">
@@ -27,7 +40,32 @@ function StandupList(props) {
                     }}
                     icon={faTrash}
                   />
-                ) : null}
+                ) : (
+                  <div className="task-status">
+                    <div
+                      onClick={(e) => {
+                        let item = e.target.parentNode.parentNode;
+                        handleStatus("completed", item);
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        className="status completed"
+                        icon={faCheckCircle}
+                      />
+                    </div>
+                    <div
+                      onClick={(e) => {
+                        let item = e.target.parentNode.parentNode;
+                        handleStatus("pending", item);
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        className="status pending"
+                        icon={faXmarkCircle}
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             </dd>
           ) : (
@@ -42,7 +80,32 @@ function StandupList(props) {
                     }}
                     icon={faTrash}
                   />
-                ) : null}
+                ) : (
+                  <div className="task-status">
+                    <div
+                      onClick={(e) => {
+                        let item = e.target.parentNode.parentNode;
+                        handleStatus("completed", item);
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        className="status completed"
+                        icon={faCheckCircle}
+                      />
+                    </div>
+                    <div
+                      onClick={(e) => {
+                        let item = e.target.parentNode.parentNode;
+                        handleStatus("pending", item);
+                      }}
+                    >
+                      <FontAwesomeIcon
+                        className="status pending"
+                        icon={faXmarkCircle}
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             </dd>
           );

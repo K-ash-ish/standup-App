@@ -36,3 +36,19 @@ h3, .standup-list{
     cursor: pointer;
     color: red;
 }
+.task-status{
+    width: 50px;
+    display: flex;
+    justify-content: space-around;
+}
+.status{
+    cursor: pointer;
+}
+.completed{
+    color: green;
+    pointer-events: none;
+}
+.pending{
+    color: red;
+    pointer-events: none;
+}
