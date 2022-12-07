@@ -43,6 +43,7 @@ function StandupList(props) {
                 ) : (
                   <div className="task-status">
                     <div
+                      className="icon"
                       onClick={(e) => {
                         let item = e.target.parentNode.parentNode;
                         handleStatus("completed", item);
@@ -54,6 +55,7 @@ function StandupList(props) {
                       />
                     </div>
                     <div
+                      className="icon"
                       onClick={(e) => {
                         let item = e.target.parentNode.parentNode;
                         handleStatus("pending", item);
@@ -83,6 +85,7 @@ function StandupList(props) {
                 ) : (
                   <div className="task-status">
                     <div
+                      className="icon"
                       onClick={(e) => {
                         let item = e.target.parentNode.parentNode;
                         handleStatus("completed", item);
@@ -94,6 +97,7 @@ function StandupList(props) {
                       />
                     </div>
                     <div
+                      className="icon"
                       onClick={(e) => {
                         let item = e.target.parentNode.parentNode;
                         handleStatus("pending", item);

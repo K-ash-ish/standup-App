@@ -41,7 +41,7 @@ h3, .standup-list{
     display: flex;
     justify-content: space-around;
 }
-.status{
+.icon{
     cursor: pointer;
 }
 .completed{
@@ -51,4 +51,9 @@ h3, .standup-list{
 .pending{
     color: red;
     pointer-events: none;
+}
+@media (max-width: 680px){
+    .card-container{
+        margin-right: 0;
+    }
 }

@@ -7,11 +7,10 @@
   display: grid;
   font-weight: 700;
   padding: 2%;
-
 }
-.form-btn{
-    align-self: center;
-    justify-self: center;
+.form-btn {
+  align-self: center;
+  justify-self: center;
 }
 .input-field {
   display: grid;
@@ -31,4 +30,17 @@
   justify-self: left;
   align-self: center;
 }
+@media (max-width: 680px) {
+  .standup-form {
+    width: 350px;
+  }
+  .input-field {
+    width: 250px;
+    grid-template-columns: 1fr 1fr;
 
+  }
+  .input-field > input {
+    width: 100px;
+    height: 10px;
+  }
+}

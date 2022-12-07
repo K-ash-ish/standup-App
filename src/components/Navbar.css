@@ -12,7 +12,7 @@ a {
   font-weight: 700;
 }
 nav .title {
-  font-size: 32px;
+  font-size: 2rem;
 }
 .title-style {
   color: #ff9500;
@@ -30,3 +30,21 @@ nav .title {
   transition: 0.6s color;
   color: #ff9500;
 }
+@media (max-width: 580px) {
+  nav{
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+    height: 100px;
+  }
+  nav .title{
+    text-align: center;
+    font-size: 1.6rem;
+  }
+  .nav-item a{
+    font-size: 16px;
+    padding: 0 1.5rem;
+  }
+
+}
+

@@ -16,13 +16,25 @@ html {
   justify-content: space-around;
   margin-bottom: 80px;
 }
-.left-container{
+.left-container {
   width: 550px;
   max-height: 300px;
 }
-.right-container{
+.right-container {
   min-height: 400px;
   display: flex;
   flex-direction: column;
 }
+@media (max-width: 1020px) {
+  .container {
+    padding: 50px 0;
+    flex-direction: column;
+    align-items: center;
 
+  }
+  .left-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+  }
+}

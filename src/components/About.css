@@ -1,16 +1,28 @@
-.about{
-    background-color: #FCF66A;
-    height: 200px;
-    /* padding: 50px 0; */
+.about {
+  background-color: #fcf66a;
+  height: 200px;
+  /* padding: 50px 0; */
 }
-h2{
-    padding: 30px;
-    text-align: center;
+h2 {
+  padding: 30px;
+  text-align: center;
 }
-.socials{
-    display: flex;
-    justify-content: space-evenly;
-    font-size: 1.5rem;
-    padding-top: 50px;
-
+.socials {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+  padding-top: 50px;
+}
+@media (max-width: 680px) {
+  .about {
+    height: 120px;
+  }
+  h2{
+    font-size: 1.4rem;
+    padding: 20px;
+  }
+  .socials {
+    font-size: 1.2rem;
+    padding-top: 15px;
+  }
 }
