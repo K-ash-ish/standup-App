@@ -3,13 +3,13 @@ import StandupList from "./StandupList";
 
 import "./Card.css";
 function Card(props) {
-  const { yesterday, today, handleClick, toRender } = props;
-  const date = new Date();
-  const currentDate =
-    date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+  const { yesterday, today, handleClick, toRender, date } = props;
+  // const date = new Date();
+  // const currentDate =
+  //   date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
   return (
     <div className="card-container">
-      <h3>{currentDate}</h3>
+      <h3>{date}</h3>
       <StandupList
         toRender={toRender}
         standups={yesterday}

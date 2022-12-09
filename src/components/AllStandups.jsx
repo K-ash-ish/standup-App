@@ -17,10 +17,11 @@ function AllStandups(props) {
           return (
             <div key = {uuidv4()} className="standup-box">
               <Card
+                date = {standup.date}
                 toRender={false}
                 key={uuidv4()}
-                yesterday={standup.yesterday}
-                today={standup.today}
+                yesterday={standup.newStandup.yesterday}
+                today={standup.newStandup.today}
               />
               <Button handleClick={deleteStandup} name = "Delete" />
             </div>

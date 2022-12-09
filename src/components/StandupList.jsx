@@ -11,8 +11,8 @@ function StandupList(props) {
     let target = event.target.parentNode.parentNode.parentNode;
     handleClick(target);
   }
-  function handleTaskStatus(progress, item) {
-    if (progress === "completed") {
+  function handleTaskStatus(status, item) {
+    if (status === "completed") {
       item.style.color = "black";
       item.style.textDecoration = "line-through";
     } else {
@@ -21,7 +21,7 @@ function StandupList(props) {
     }
   }
   function List(props) {
-    const { data, id } = props;
+    const { data, id, taskStatus } = props;
     return (
       <dd key={uuidv4()} id={id} className="list-item">
         <div className="item">
@@ -35,7 +35,7 @@ function StandupList(props) {
               icon={faTrash}
             />
           ) : (
-            <TaskStatusIcon handleTaskStatus={handleTaskStatus} />
+            <TaskStatusIcon taskStatus = {taskStatus}  handleTaskStatus={handleTaskStatus} />
           )}
         </div>
       </dd>
@@ -46,10 +46,11 @@ function StandupList(props) {
       <dl className="standup-list">
         <dt className="list-heading">{name}:</dt>
         {standups.map((data) => {
+          console.log(data.taskStatus)
           return name === "Yesterday" ? (
-            <List key={uuidv4()} data={data.standup} id={data.id} />
+            <List taskStatus = {data.taskStatus} key={uuidv4()} data={data.standup} id={data.id} />
           ) : (
-            <List key={uuidv4()} data={data.standup} id={data.id} />
+            <List taskStatus = {data.taskStatus} key={uuidv4()} data={data.standup} id={data.id} />
           );
         })}
       </dl>

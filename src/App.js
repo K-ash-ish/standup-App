@@ -9,14 +9,35 @@ function App() {
   const [yStandup, setYStandup] = useState({
     standup: "",
     id: "",
+    taskStatus: ''
   });
   const [tStandup, setTStandup] = useState({
     standup: "",
     id: "",
+    taskStatus: ''
   });
-  const [allStandups, setAllStandups] = useState([]);
+
+  const [allStandups, setAllStandups] = useState([
+    {
+      id:uuidv4(),
+      date:"hello",
+      newStandup:{
+        yesterday:[
+          {standup: 'one', id: 'a;lsdkfjpoq2eirkdfn', taskStatus: false},
+          {standup: 'two', id: 'als;kdfjopweiurn', taskStatus: false}
+        ],
+        today:[
+          {standup: 'three', id: 'a;lsdkfjpoq2easdfirkdfn', taskStatus: false},
+          {standup: 'four', id: 'a;lsdkfjpoq2sdfeirkdfn', taskStatus: false}
+        ]
+      }
+    }
+  ]);
   const [yesterday, setYesterday] = useState([]);
   const [today, setToday] = useState([]);
+  const date = new Date();
+  const currentDate =
+    date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
   function handleInput(event) {
     const { name, value } = event.target;
     if (name === "yesterday") {
@@ -24,6 +45,7 @@ function App() {
         return {
           standup: value,
           id: uuidv4(),
+          taskStatus: false
         };
       });
     } else {
@@ -31,6 +53,7 @@ function App() {
         return {
           standup: value,
           id: uuidv4(),
+          taskStatus: false
         };
       });
     }
@@ -46,12 +69,17 @@ function App() {
   }
   function addAllStandup() {
     const newStandup = {
-      yesterday: yesterday,
-      today: today,
+      id: uuidv4(),
+      date: currentDate,
+      newStandup: {
+        yesterday: yesterday,
+        today: today,
+      }
     };
     setAllStandups((prevValue) => {
       return [...prevValue, newStandup];
     });
+    console.log(allStandups);
   }
   function deleteItem(target) {
     setYesterday((prevValue) => {
@@ -65,6 +93,7 @@ function App() {
       });
     });
   }
+  function deleteStandup(target) {}
 
   return (
     <div className="app">
@@ -87,7 +116,12 @@ function App() {
         ></Route>
         <Route
           path="/allstandups"
-          element={<AllStandups allStandups={allStandups} />}
+          element={
+            <AllStandups
+              deleteStandup={deleteStandup}
+              allStandups={allStandups}
+            />
+          }
         ></Route>
       </Routes>
     </div>

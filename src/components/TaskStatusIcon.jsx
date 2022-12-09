@@ -5,7 +5,7 @@ import {
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 function TaskStatusIcon(props) {
-  const { handleTaskStatus } = props;
+  const { handleTaskStatus, taskStatus } = props;
   function Icon(props) {
     const { status, icon, classN } = props;
     return (
