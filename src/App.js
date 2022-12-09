@@ -17,22 +17,7 @@ function App() {
     taskStatus: ''
   });
 
-  const [allStandups, setAllStandups] = useState([
-    {
-      id:uuidv4(),
-      date:"hello",
-      newStandup:{
-        yesterday:[
-          {standup: 'one', id: 'a;lsdkfjpoq2eirkdfn', taskStatus: false},
-          {standup: 'two', id: 'als;kdfjopweiurn', taskStatus: false}
-        ],
-        today:[
-          {standup: 'three', id: 'a;lsdkfjpoq2easdfirkdfn', taskStatus: false},
-          {standup: 'four', id: 'a;lsdkfjpoq2sdfeirkdfn', taskStatus: false}
-        ]
-      }
-    }
-  ]);
+  const [allStandups, setAllStandups] = useState([]);
   const [yesterday, setYesterday] = useState([]);
   const [today, setToday] = useState([]);
   const date = new Date();
@@ -129,3 +114,18 @@ function App() {
 }
 
 export default App;
+
+// {
+//   id:uuidv4(),
+//   date:"hello",
+//   newStandup:{
+//     yesterday:[
+//       {standup: 'one', id: 'a;lsdkfjpoq2eirkdfn', taskStatus: false},
+//       {standup: 'two', id: 'als;kdfjopweiurn', taskStatus: false}
+//     ],
+//     today:[
+//       {standup: 'three', id: 'a;lsdkfjpoq2easdfirkdfn', taskStatus: false},
+//       {standup: 'four', id: 'a;lsdkfjpoq2sdfeirkdfn', taskStatus: false}
+//     ]
+//   }
+// }
