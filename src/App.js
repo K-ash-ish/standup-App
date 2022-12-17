@@ -35,6 +35,24 @@ function App() {
           { standup: "four", id: "a;lsdkfjpoq2sdfeirkdfn", taskStatus: false },
         ],
       },
+    },
+    {
+      id: uuidv4(),
+      date: "asdf",
+      newStandup: {
+        yesterday: [
+          { standup: "one", id: "a;lsdkfjpoq2eirkdfn", taskStatus: false },
+          { standup: "two", id: "als;kdfjopweiurn", taskStatus: false },
+        ],
+        today: [
+          {
+            standup: "three",
+            id: "a;lsdkfjpoq2easdfirkdfn",
+            taskStatus: false,
+          },
+          { standup: "four", id: "a;lsdkfjpoq2sdfeirkdfn", taskStatus: false },
+        ],
+      },
     }
   ]);
   const [yesterday, setYesterday] = useState([]);
@@ -96,7 +114,13 @@ function App() {
       });
     });
   }
-  function deleteStandup(target) {}
+  function deleteStandup(target) {
+     setAllStandups((prevValue)=>{
+       return prevValue.filter((standup)=>{
+        return standup.id !== target;
+      })
+    })
+  }
   function handleTaskStatus(headId, target, value) {
     // console.log(target)
     setAllStandups((prevValue) => {

@@ -17,7 +17,7 @@ function AllStandups(props) {
           return (
             <div key={uuidv4()} className="standup-box">
               <Card
-                headId = {standup.id}
+                headId={standup.id}
                 handleTaskStatus={handleTaskStatus}
                 date={standup.date}
                 toRender={false}
