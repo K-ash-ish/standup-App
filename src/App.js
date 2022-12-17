@@ -9,15 +9,34 @@ function App() {
   const [yStandup, setYStandup] = useState({
     standup: "",
     id: "",
-    taskStatus: ''
+    taskStatus: "",
   });
   const [tStandup, setTStandup] = useState({
     standup: "",
     id: "",
-    taskStatus: ''
+    taskStatus: "",
   });
 
-  const [allStandups, setAllStandups] = useState([]);
+  const [allStandups, setAllStandups] = useState([
+    {
+      id: uuidv4(),
+      date: "hello",
+      newStandup: {
+        yesterday: [
+          { standup: "one", id: "a;lsdkfjpoq2eirkdfn", taskStatus: false },
+          { standup: "two", id: "als;kdfjopweiurn", taskStatus: false },
+        ],
+        today: [
+          {
+            standup: "three",
+            id: "a;lsdkfjpoq2easdfirkdfn",
+            taskStatus: false,
+          },
+          { standup: "four", id: "a;lsdkfjpoq2sdfeirkdfn", taskStatus: false },
+        ],
+      },
+    }
+  ]);
   const [yesterday, setYesterday] = useState([]);
   const [today, setToday] = useState([]);
   const date = new Date();
@@ -30,7 +49,7 @@ function App() {
         return {
           standup: value,
           id: uuidv4(),
-          taskStatus: false
+          taskStatus: false,
         };
       });
     } else {
@@ -38,7 +57,7 @@ function App() {
         return {
           standup: value,
           id: uuidv4(),
-          taskStatus: false
+          taskStatus: false,
         };
       });
     }
@@ -59,12 +78,11 @@ function App() {
       newStandup: {
         yesterday: yesterday,
         today: today,
-      }
+      },
     };
     setAllStandups((prevValue) => {
       return [...prevValue, newStandup];
     });
-    console.log(allStandups);
   }
   function deleteItem(target) {
     setYesterday((prevValue) => {
@@ -79,6 +97,28 @@ function App() {
     });
   }
   function deleteStandup(target) {}
+  function handleTaskStatus(headId, target, value) {
+    // console.log(target)
+    setAllStandups((prevValue) => {
+      let newValue = [...prevValue];
+      newValue.forEach((standups) => {
+        if (standups.id === headId) {
+          standups.newStandup.today.forEach((standup) => {
+            if (standup.id === target) {
+              standup.taskStatus = value;
+            }
+          });
+          standups.newStandup.yesterday.forEach((standup) => {
+            if (standup.id === target) {
+              standup.taskStatus = value;
+            }
+          });
+        }
+      });
+      console.log(newValue)
+      return newValue;
+    });
+  }
 
   return (
     <div className="app">
@@ -103,6 +143,7 @@ function App() {
           path="/allstandups"
           element={
             <AllStandups
+              handleTaskStatus={handleTaskStatus}
               deleteStandup={deleteStandup}
               allStandups={allStandups}
             />
@@ -114,18 +155,3 @@ function App() {
 }
 
 export default App;
-
-// {
-//   id:uuidv4(),
-//   date:"hello",
-//   newStandup:{
-//     yesterday:[
-//       {standup: 'one', id: 'a;lsdkfjpoq2eirkdfn', taskStatus: false},
-//       {standup: 'two', id: 'als;kdfjopweiurn', taskStatus: false}
-//     ],
-//     today:[
-//       {standup: 'three', id: 'a;lsdkfjpoq2easdfirkdfn', taskStatus: false},
-//       {standup: 'four', id: 'a;lsdkfjpoq2sdfeirkdfn', taskStatus: false}
-//     ]
-//   }
-// }

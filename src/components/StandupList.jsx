@@ -6,25 +6,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 function StandupList(props) {
-  const { name, standups, handleClick, toRender } = props;
+  const { name, standups, handleClick, toRender, handleTaskStatus } = props;
   function deleteListItem(event) {
     let target = event.target.parentNode.parentNode.parentNode;
     handleClick(target);
   }
-  function handleTaskStatus(status, item) {
-    if (status === "completed") {
-      item.style.color = "black";
-      item.style.textDecoration = "line-through";
-    } else {
-      item.style.textDecoration = "none";
-      item.style.color = "red";
-    }
-  }
+
   function List(props) {
     const { data, id, taskStatus } = props;
     return (
       <dd key={uuidv4()} id={id} className="list-item">
-        <div className="item">
+        <div style={{ color: taskStatus ? "black" : "red" , textDecoration : taskStatus ? "line-through": "none" } } className="item">
           {data}
           {toRender ? (
             <FontAwesomeIcon
@@ -35,7 +27,10 @@ function StandupList(props) {
               icon={faTrash}
             />
           ) : (
-            <TaskStatusIcon taskStatus = {taskStatus}  handleTaskStatus={handleTaskStatus} />
+            <TaskStatusIcon
+              taskStatus={taskStatus}
+              handleTaskStatus={handleTaskStatus}
+            />
           )}
         </div>
       </dd>
@@ -46,11 +41,20 @@ function StandupList(props) {
       <dl className="standup-list">
         <dt className="list-heading">{name}:</dt>
         {standups.map((data) => {
-          console.log(data.taskStatus)
           return name === "Yesterday" ? (
-            <List taskStatus = {data.taskStatus} key={uuidv4()} data={data.standup} id={data.id} />
+            <List
+              taskStatus={data.taskStatus}
+              key={uuidv4()}
+              data={data.standup}
+              id={data.id}
+            />
           ) : (
-            <List taskStatus = {data.taskStatus} key={uuidv4()} data={data.standup} id={data.id} />
+            <List
+              taskStatus={data.taskStatus}
+              key={uuidv4()}
+              data={data.standup}
+              id={data.id}
+            />
           );
         })}
       </dl>
