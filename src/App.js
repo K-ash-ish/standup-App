@@ -115,7 +115,6 @@ function App() {
           });
         }
       });
-      console.log(newValue)
       return newValue;
     });
   }
