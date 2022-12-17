@@ -20,7 +20,7 @@ function App() {
   const [allStandups, setAllStandups] = useState([
     {
       id: uuidv4(),
-      date: "hello",
+      date: "Standup 1",
       newStandup: {
         yesterday: [
           { standup: "one", id: "a;lsdkfjpoq2eirkdfn", taskStatus: false },
@@ -38,7 +38,7 @@ function App() {
     },
     {
       id: uuidv4(),
-      date: "asdf",
+      date: "Standup 2",
       newStandup: {
         yesterday: [
           { standup: "one", id: "a;lsdkfjpoq2eirkdfn", taskStatus: false },
